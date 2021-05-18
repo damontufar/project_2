@@ -41,7 +41,15 @@ deathsdf = deathsdf[(deathsdf.Year==2017) & (deathsdf.Entity!='Andean Latin Amer
                     (deathsdf.Entity!='Western Europe') & (deathsdf.Entity!='Western Sub-Saharan Africa')]
 entities = deathsdf['Entity']
 
+#Scrape Countries & Codes
 
+url = 'https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes'
+
+table = pd.read_html(url)
+
+#Slice to DataFrame
+countries_df = table[0]
+#Select wanted columns
 #Write Path
 
 #write_path = os.path.join('Output/')
