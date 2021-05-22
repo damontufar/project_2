@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="main.html">
+            <img src="../project2-react/src/logochido.png" alt="Logo chido" width="100">
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 jumbotron text-center">
+                <h3 style="color: red; font-weight: bold;">Health Report:</h3>
+                <hr>
+                <h4 class="text-justify">
+                    In order to know whether the user's data is healthy or not, we need to get all the user's
+                    info. If you are so kind to fill the form below, we will be able to let you know all your
+                    state info and how your health is compared to your state's health. Thnx, lob u, bai ❤.
+                </h4>
+            </div>
+        </div>
+        <div class="row col-md-3">
+            <form class="well">
+                <label>First Name:</label>
+                <input type="text" name="fname" placeholder="Pepito">
+                <br>
+                <label>Last Name:</label>
+                <input type="text" name="lname" placeholder="Perez">
+                <br>
+                <br>
+                <label>Birth Year:</label>
+                <select id="selBirthYear" onchange="optionChanged(this.value)"></select>
+                <br>
+                <label>Sex:</label>
+                <select id="selSex" onchange="optionChanged(this.value)"></select>
+                <br>
+                <label>Height:</label>
+                <input type="number" min="25" id="height" placeholder="In centimeters: 170">
+                <br>
+                <label>Weight:</label>
+                <input type="number" min="10" id="weight" placeholder="In kilograms: 70">
+                <br>
+                <br>
+                <label>State:</label>
+                <select id="selState" onchange="optionChanged(this.value)"></select>
+                <br>
+                <label>Do you smoke?:</label>
+                <select id="selSmoke" onchange="optionChanged(this.value)"></select>
+                <br>
+                <label>Do you drink?:</label>
+                <select id="selDrink" onchange="optionChanged(this.value)"></select>
+                <br>
+                <label>How often do you workout?:</label>
+                <select id="selWorkout" onchange="optionChanged(this.value)"></select>
+                <br>
+                <label>How many hours do you sleep?:</label>
+                <select id="selSleep" onchange="optionChanged(this.value)"></select>
+                <br>
+                <br>
+                <button id="add-btn" type="button" class="btn btn-default">Calculate</button>
+            </form>
+            <div class="col-md-4" id="BMI"></div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="static/js/states.js"></script>
+    <script src="static/json/states.json"></script>
+</body>
