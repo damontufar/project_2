@@ -2,6 +2,7 @@
 #Dependencies
 import pandas as pd
 import os
+from config import key
 from sqlalchemy import create_engine
 
 #Extract CSV into DataFrames
@@ -55,22 +56,36 @@ countries_df.columns = countries_df.columns.droplevel(0)
 countries_df = countries_df[['Country name[5]', 'Alpha-3 code[5]']]
 countries_df.columns = ['Country_Name', 'Country_Code']
 #Review columns
-print(countries_df.info())
+#print(countries_df.info())
 
-#Join in order to only keep countries
+#Join in order to only keep countries & Keep necessary columns
 
 deathsdf_c = pd.merge(deathsdf, countries_df, on='Country_Code')
-print(deathsdf_c.info())
-
+deathsdf_c = deathsdf_c.iloc[:, 0:10]
+#print(deathsdf_c.info())
 
 
 #Data Normalization
-#deathsdf_transformed = deathsdf.melt(id_vars = ['Entity', 'Code', 'Year'], var_name = 'risk_factor', value_name='number_deaths')
-#print(deathsdf_transformed.head())
+deathsdf_transformed = deathsdf_c.melt(id_vars = ['Country_Name_x', 'Country_Code', 'Year'], var_name = 'risk_factor', value_name='number_deaths')
+#Name columns match with table in database
+deathsdf_transformed.columns = ['country_name', 'country_code', 'year', 'risk_factor', 'number_of_deaths']
+#print(deathsdf_transformed)
 
-#Write Path
 
-#write_path = os.path.join('Output/')
-#entities.to_csv(f'{write_path}entities.csv')
+#Create database connection
+
+db_url = f'postgresql://postgres:{key}@localhost:5432/health_db'
+engine = create_engine(db_url)
+
+#Confirm tables
+print(engine.table_names())
+
+#Load DataFrame into database
+
+deathsdf_transformed.to_sql(name = 'deaths_risk_factors',
+                            con = engine,
+                            if_exists= 'append',
+                            index = False)
+
 
 
