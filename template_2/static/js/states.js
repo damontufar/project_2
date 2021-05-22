@@ -52,10 +52,36 @@ let birthYear = []
 let sex = ["Female","Male","Other"]
 let freq = ["Daily","Frequently","Occasionally","Never"]
 let sleep = ["0 - 4 hours","4 - 6 hours","6 - 8 hours","+8 hours"]
+let wght = []
+let hght = []
+
+for (i = 20; i < 170; ++i) {
+    wght.push(i)
+}
+
+for (i = 50; i < 230; ++i) {
+    hght.push(i)
+}
 
 for (i = 1950; i < new Date().getFullYear() - 9; ++i) {
     birthYear.push(i)
 }
+
+d3.select("#selHeight")
+    .selectAll("option")
+    .data(hght)
+    .enter()
+    .append("option")
+    .text(d => d)
+    .attr("value", d => d)
+
+d3.select("#selWeight")
+    .selectAll("option")
+    .data(wght)
+    .enter()
+    .append("option")
+    .text(d => d)
+    .attr("value", d => d)
 
 d3.select("#selBirthYear")
     .selectAll("option")
@@ -104,3 +130,57 @@ d3.select("#selSleep")
     .append("option")
     .text(d => d)
     .attr("value", d => d)
+
+let addUser = d3.select("#add-btn");
+
+addUser.on('click', runEnter);
+
+function runEnter() {
+    d3.event.preventDefault();
+
+    let bmiHTML = d3.select("#BMI");
+    bmiHTML.selectAll("p").remove();
+    bmiHTML.selectAll("ul").remove();
+
+    let inputBYear = d3.select("#selBirthYear");
+    let bYear = inputBYear.node().value;
+    let tYear = new Date().getFullYear();
+    
+    let age = tYear - bYear;
+
+    let h = d3.select("#selHeight").node().value;
+    let w = d3.select("#selWeight").node().value;
+
+    let st = d3.select("#selState").node().value;
+
+    let bmi = Math.round(w/((h/100)**2),2);
+
+    bmiHTML.append("p")
+        .text(`Your body mass index is ${bmi},
+        but what does this mean?`)
+
+    if (age > 18) {
+        if (bmi < 18.5) {
+            bmiHTML.append("ul")
+                .append("li")
+                .text("You are underweighted.")
+        } else if (bmi < 25) {
+            bmiHTML.append("ul")
+                .append("li")
+                .text("You are in the healthy weight range.")
+        } else if (bmi < 30) {
+            bmiHTML.append("ul")
+                .append("li")
+                .text("You are overweighted. (FATTY)")
+        } else {
+            bmiHTML.append("ul")
+                .append("li")
+                .text("You are obese.")
+        }
+    }
+    
+    console.log(age);
+    console.log(h);
+    console.log(w);
+    console.log(st);
+}

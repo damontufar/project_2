@@ -1,5 +1,8 @@
 // This is the state where the user is located
-var user_state = 'Guanajuato';
+// import { st } from "../../../static/js/states"
+// console.log(st);
+
+var user_state = 'Mexico City';
 
 // Variable that contains information about Mexico's states
 // The information was obtained from https://en.wikipedia.org/wiki/List_of_states_of_Mexico

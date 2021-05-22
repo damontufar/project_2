@@ -45,52 +45,55 @@
                 </h4>
             </div>
         </div>
-        <div class="row col-md-3">
-            <form class="well">
-                <label>First Name:</label>
-                <input type="text" name="fname" placeholder="Pepito">
-                <br>
-                <label>Last Name:</label>
-                <input type="text" name="lname" placeholder="Perez">
-                <br>
-                <br>
-                <label>Birth Year:</label>
-                <select id="selBirthYear" onchange="optionChanged(this.value)"></select>
-                <br>
-                <label>Sex:</label>
-                <select id="selSex" onchange="optionChanged(this.value)"></select>
-                <br>
-                <label>Height:</label>
-                <input type="number" min="25" id="height" placeholder="In centimeters: 170">
-                <br>
-                <label>Weight:</label>
-                <input type="number" min="10" id="weight" placeholder="In kilograms: 70">
-                <br>
-                <br>
-                <label>State:</label>
-                <select id="selState" onchange="optionChanged(this.value)"></select>
-                <br>
-                <label>Do you smoke?:</label>
-                <select id="selSmoke" onchange="optionChanged(this.value)"></select>
-                <br>
-                <label>Do you drink?:</label>
-                <select id="selDrink" onchange="optionChanged(this.value)"></select>
-                <br>
-                <label>How often do you workout?:</label>
-                <select id="selWorkout" onchange="optionChanged(this.value)"></select>
-                <br>
-                <label>How many hours do you sleep?:</label>
-                <select id="selSleep" onchange="optionChanged(this.value)"></select>
-                <br>
-                <br>
-                <button id="add-btn" type="button" class="btn btn-default">Calculate</button>
-                <br>
-                <hr>
-                <a class="btn btn-primary btn-lg" href="nutritionist_map.html" role="button">
-                    Nutritionists near to me
-                </a>
-            </form>
-            <div class="col-md-4" id="BMI"></div>
+        <div class="row">
+            <div class="col-md-3">
+                <form class="well">
+                    <label>First Name:</label>
+                    <input type="text" name="fname" placeholder="Pepito">
+                    <br>
+                    <label>Last Name:</label>
+                    <input type="text" name="lname" placeholder="Perez">
+                    <br>
+                    <br>
+                    <label>Birth Year:</label>
+                    <select id="selBirthYear" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <label>Sex:</label>
+                    <select id="selSex" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <label>Height (in cm):</label>
+                    <select id="selHeight"></select>
+                    <br>
+                    <label>Weight (in kg):</label>
+                    <select id="selWeight"></select>
+                    <br>
+                    <label>State:</label>
+                    <select id="selState" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <label>Do you smoke?:</label>
+                    <select id="selSmoke" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <label>Do you drink?:</label>
+                    <select id="selDrink" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <label>How often do you workout?:</label>
+                    <select id="selWorkout" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <label>How many hours do you sleep?:</label>
+                    <select id="selSleep" onchange="optionChanged(this.value)"></select>
+                    <br>
+                    <br>
+                    <button id="add-btn" type="button" class="btn btn-default">Calculate</button>
+                    <br>
+                    <hr>
+                    <a class="btn btn-primary btn-lg" href="nm/nutricionist_map_e.html" role="button">
+                        Nutritionists near me
+                    </a>
+                </form>
+            </div>
+            <div class="col-md-4" id="BMI">
+                <h5>Body Mass Index</h5>
+            </div>
         </div>
     </div>    
 
