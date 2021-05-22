@@ -7,7 +7,8 @@ import pandas as pd
 
 def scrape():
     #set up splinter 
-    executable_path = {"executable_path": "chromedriver.exe"}
+    executable_path = {"executable_path": ChromeDriverManager().install()}
+    #executable_path = {"executable_path": "chromedriver.exe"}
     browser = Browser("chrome", **executable_path, headless=False)
 
     #--------------------------
@@ -124,10 +125,10 @@ def scrape():
         "date": latest_news_date,
         "image": latest_news_image
     }
-
+    
     #Return the health_data dict
     return health_data
-   
+  
 
 
 
