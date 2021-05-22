@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8" lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Health Metrics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+      
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="main.html">
-            <img src="../project2-react/src/logochido.png" alt="Logo chido" width="100">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: white;">
+        <a class="navbar-brand" href="main.html" alt="Home">
+            <img src="../project2-react/src/logochido.png" width="100px" />
         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="main.html">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news_and_recommendations.html">
+                  News and Recommendations
+              </a>
+            </li>
+          </ul>
+        </div>
     </nav>
 
     <div class="container">
@@ -20,7 +41,7 @@
                 <h4 class="text-justify">
                     In order to know whether the user's data is healthy or not, we need to get all the user's
                     info. If you are so kind to fill the form below, we will be able to let you know all your
-                    state info and how your health is compared to your state's health. Thnx, lob u, bai ❤.
+                    state info and how your health is compared to your state's health.
                 </h4>
             </div>
         </div>
@@ -63,10 +84,15 @@
                 <br>
                 <br>
                 <button id="add-btn" type="button" class="btn btn-default">Calculate</button>
+                <br>
+                <hr>
+                <a class="btn btn-primary btn-lg" href="nutritionist_map.html" role="button">
+                    Nutritionists near to me
+                </a>
             </form>
             <div class="col-md-4" id="BMI"></div>
         </div>
-    </div>
+    </div>    
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
