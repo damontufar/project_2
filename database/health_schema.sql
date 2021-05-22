@@ -1,6 +1,7 @@
-﻿CREATE TABLE "cat_diseases" (
+CREATE TABLE "cat_diseases" (
     "id_disease" INT   NOT NULL,
     "disease" VARCHAR   NOT NULL,
+	"detail" VARCHAR NOT NULL,
     CONSTRAINT "pk_cat_diseases" PRIMARY KEY (
         "id_disease"
      )

@@ -16,6 +16,9 @@
           h5{
               font-size: 20px;
           }
+          h3{
+              font-size: 25px; 
+          }
           h4{
               font-size: 20px; 
           }
@@ -23,9 +26,11 @@
               font-size: 25px; 
           }
           p{
-              font-size: 15x
+              font-size: 10x
           }
-          
+          a{
+              font-size: 35x
+          }
         </style>
 
     </head>
@@ -34,17 +39,47 @@
     <body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
         <div clas="container">
           <div class="jumbotron text-center">
-            <h1>Health</h1>
-            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            <h1>Health News</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Latest News Update</a></p>
           </div>
           
-          <!--latest health news-->
+          <!--latest health news 1-->
           <div class="container">
               <h3><strong>Latest News about Metabolic Syndrome </h3>
-              <h4></h4>
-              <p></p>
-            </div>
+                <!--<h1><br></h1>-->
+              <hr color="blue" size=3>
+              <p>{{health_data.date[0].news_date}}</p>
+              <a href="{{health_data.link[0].news_link}}" target="_blank">{{health_data.title[0].news_title}}</a>  
+              <p>{{health_data.para[0].news_para}}</p>
+              <img src={{health_data.image[0].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
           </div>
+
+          <!--latest health news 2-->
+          <div class="container">
+              <!--<h1><br></h1>-->
+              <hr color="blue" size=3>
+              <p>{{health_data.date[1].news_date}}</p>
+              <a href="{{health_data.link[1].news_link}}" target="_blank">{{health_data.title[1].news_title}}</a>  
+              <p>{{health_data.para[1].news_para}}</p>
+              <img src={{health_data.image[1].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+          </div>
+
+          <!--latest health news 3-->
+          <div class="container">
+              <!--<h1><br></h1>-->
+              <hr color="blue" size=3>
+              <p>{{health_data.date[2].news_date}}</p>
+              <a href="{{health_data.link[2].news_link}}" target="_blank">{{health_data.title[2].news_title}}</a>  
+              <p>{{health_data.para[2].news_para}}</p>
+              <img src={{health_data.image[2].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+              <hr color="blue" size=3>
+            </div>
+
+        </div>
+
+
+        </div>
+
 
           <div class = "container">
             <div class = "row">
@@ -72,7 +107,7 @@
            <div class="text-center" >
              <h3><strong></h3>
            </div>
-        </div>
+        </div>-->
 
         <!--hemispheres-->
         <div class = "container">
