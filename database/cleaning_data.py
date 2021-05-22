@@ -5,6 +5,7 @@ import os
 from config import key
 from sqlalchemy import create_engine
 
+#### DEATHS BY RISK FACTOR
 #Extract CSV into DataFrames
 
 read_path = os.path.join('Resources')
@@ -72,6 +73,36 @@ deathsdf_transformed.columns = ['country_name', 'country_code', 'year', 'risk_fa
 #print(deathsdf_transformed)
 
 
+###HEIGHT 
+#Read Files
+height_w_df = pd.read_csv(f'{read_path}/average-height-of-women.csv')
+height_m_df = pd.read_csv(f'{read_path}/average-height-of-men.csv')
+
+#Rename columns 
+height_w_df.columns = ['Country_Name', 'Country_Code', 'Birth_Year', 'Height']
+height_m_df.columns = ['Country_Name', 'Country_Code', 'Birth_Year', 'Height']
+#Group by Year of birth
+height_w_df = height_w_df.groupby(['Country_Name', 'Country_Code'])['Height'].mean()
+height_m_df = height_m_df.groupby(['Country_Name', 'Country_Code'])['Height'].mean()
+
+#Reset index
+height_w_df = height_w_df.reset_index()
+height_m_df = height_m_df.reset_index()
+
+#Join women & men tables to have just one height table
+height_df = pd.merge(height_w_df, height_m_df, on=(['Country_Code', 'Country_Name']), suffixes= ('_women', '_men'))
+
+#Join in order to only keep countries & Keep necessary columns
+height_c = pd.merge(height_df, countries_df, on='Country_Code')
+height_c = height_c.iloc[:, 0:4]
+
+#Data Normalization
+height_c.columns = ['country_name', 'country_code', 'Female', 'Male']
+height_transformed = height_c.melt(id_vars = ['country_name', 'country_code'], var_name = 'sex', value_name='height')
+#print(height_transformed.head())
+
+
+
 #Create database connection
 
 db_url = f'postgresql://postgres:{key}@localhost:5432/health_db'
@@ -83,6 +114,11 @@ print(engine.table_names())
 #Load DataFrame into database
 
 deathsdf_transformed.to_sql(name = 'deaths_risk_factors',
+                            con = engine,
+                            if_exists= 'append',
+                            index = False)
+
+height_transformed.to_sql(name = 'height',
                             con = engine,
                             if_exists= 'append',
                             index = False)
