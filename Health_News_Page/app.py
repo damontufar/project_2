@@ -28,7 +28,8 @@ def scrape():
 
     health = mongo.db.health_data
     health_data = scrape_health.scrape()
-    health.insert_many(health_data)
+    #health.insert_many(health_data)
+    health.update({}, health_data, upsert=True)
 
     print(health_data)
 
