@@ -31,10 +31,20 @@ class UserHabits(db.Model):
     frequency = db.Column(db.String, index = True, unique = False)
     users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    #Function to pass user's data and gets as new entry in the table
+    def __init__(self, first_name, last_name, birth_year, height, weight, state):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.birth_year = birth_year
+        self.height = height
+        self.weight = weight
+        self.state = state
 
+
+        
 @app.route('/')
 def home():
-    return redirect(url_for('main'))
+    return redirect(url_for('health'))
 
 @app.route('/health', methods = ['GET', 'POST'])
 def health():
@@ -42,10 +52,10 @@ def health():
         data = request.form # request the data from the form in health.html file
         first_name = data['first_name']
         last_name = data['last_name']
-        birth_year = data['birth_year']
-        height = data['height']
-        weight = data['weight']
-        state = data['state']
+        birth_year = data['selBirthYear']
+        height = data['selHeight']
+        weight = data['selWeight']
+        state = data['selState']
 
         new_data = Users(first_name, last_name, birth_year, height, weight, state)
         db.session.add(new_data)
@@ -58,7 +68,7 @@ def health():
 
 
 if __name__ == '__main__':
-    db.create_all
+    db.create_all()
     app.run(debug=True)
 
 
