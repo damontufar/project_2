@@ -1,4 +1,5 @@
 
+from operator import ne
 from flask import Flask
 from sqlalchemy.orm import backref
 from config import key
@@ -30,24 +31,35 @@ class UserHabits(db.Model):
     frequency = db.Column(db.String, index = True, unique = False)
     users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    
-
-
-
-
-
-app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return redirect(url_for('index'))
+    return redirect(url_for('main'))
 
 @app.route('/health', methods = ['GET', 'POST'])
+def health():
+    if request.method == 'POST': # When a user clicks "Calculate" button it will come here
+        data = request.form # request the data from the form in health.html file
+        first_name = data['first_name']
+        last_name = data['last_name']
+        birth_year = data['birth_year']
+        height = data['height']
+        weight = data['weight']
+        state = data['state']
+
+        new_data = Users(first_name, last_name, birth_year, height, weight, state)
+        db.session.add(new_data)
+        db.session.commit()
+
+        user_data = Users.query.all()
+
+        return render_template('health.html', user_data = user_data) # passes user_data variable into the index.html file.
+    return render_template('health.html')
 
 
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    db.create_all
+    app.run(debug=True)
 
 
 
