@@ -163,26 +163,49 @@ function runEnter() {
         if (bmi < 18.5) {
             bmiHTML.append("ul")
                 .append("li")
-                .text("According to the WHO, you are underweighted.")
-            
-            bmiHTML.append("li")
+                .text("According to the World Health Organization, you are in the underweighted range.")
+                .append("li")
                 .text("According to Singapore, you have a risk of developing problems \
                 such as nutritional deficiency and osteoporosis")
         } else if (bmi < 25) {
-            bmiHTML.append("ul")
-                .append("li")
-                .text("You are in the healthy weight range.")
+            if (bmi < 23) {
+                bmiHTML.append("ul")
+                    .append("li")
+                    .text("According to the World Health Organization, you are in the normal weight range.")
+                    .append("li")
+                    .text("According to Singapore, you are in low risk")
+            } else {
+                bmiHTML.append("ul")
+                    .append("li")
+                    .text("According to the World Health Organization, you are in the normal weight range.")
+                    .append("li")
+                    .text("According to Singapore, you are in moderate risk of developing heart disease, high \
+                    blood pressure, stroke or diabetes.")
+            }
         } else if (bmi < 30) {
-            bmiHTML.append("ul")
-                .append("li")
-                .text("You are overweighted. (FATTY)")
+            if (bmi < 27.5) {
+                bmiHTML.append("ul")
+                    .append("li")
+                    .text("According to the World Health Organization, you are in the overweighted range.")
+                    .append("li")
+                    .text("According to Singapore, you are in moderate risk of developing heart disease, high \
+                    blood pressure, stroke or diabetes.")
+            } else {
+                bmiHTML.append("ul")
+                    .append("li")
+                    .text("According to the World Health Organization, you are in the overweighted range.")
+                    .append("li")
+                    .text("According to Singapore, you are in high risk of developing heart disease, high \
+                    blood pressure, stroke or diabetes.")
+            }
         } else {
             bmiHTML.append("ul")
                 .append("li")
-                .text("You are obese.")
+                .text("According to the World Health Organization, you are in the obessity range.")
+                .append("li")
+                .text("According to Singapore, you are in high risk of developing heart disease, high \
+                blood pressure, stroke or diabetes.")
         }
     }
     
 }
-
-export { st }

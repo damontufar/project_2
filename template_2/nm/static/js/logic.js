@@ -1,8 +1,8 @@
 // This is the state where the user is located
-// import { st } from "../../../static/js/states"
-// console.log(st);
+import { st } from "../../../static/js/states.js"
+console.log(states.st);
 
-var user_state = 'Mexico City';
+var user_state = states.st;
 
 // Variable that contains information about Mexico's states
 // The information was obtained from https://en.wikipedia.org/wiki/List_of_states_of_Mexico

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Health Metrics</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/css/health.css">
 </head>
       
 <body>
@@ -56,10 +57,10 @@
                     <br>
                     <br>
                     <label>Birth Year:</label>
-                    <select id="selBirthYear" onchange="optionChanged(this.value)"></select>
+                    <select id="selBirthYear"></select>
                     <br>
                     <label>Sex:</label>
-                    <select id="selSex" onchange="optionChanged(this.value)"></select>
+                    <select id="selSex"></select>
                     <br>
                     <label>Height (in cm):</label>
                     <select id="selHeight"></select>
@@ -68,19 +69,19 @@
                     <select id="selWeight"></select>
                     <br>
                     <label>State:</label>
-                    <select id="selState" onchange="optionChanged(this.value)"></select>
+                    <select id="selState"></select>
                     <br>
                     <label>Do you smoke?:</label>
-                    <select id="selSmoke" onchange="optionChanged(this.value)"></select>
+                    <select id="selSmoke"></select>
                     <br>
                     <label>Do you drink?:</label>
-                    <select id="selDrink" onchange="optionChanged(this.value)"></select>
+                    <select id="selDrink"></select>
                     <br>
                     <label>How often do you workout?:</label>
-                    <select id="selWorkout" onchange="optionChanged(this.value)"></select>
+                    <select id="selWorkout"></select>
                     <br>
                     <label>How many hours do you sleep?:</label>
-                    <select id="selSleep" onchange="optionChanged(this.value)"></select>
+                    <select id="selSleep"></select>
                     <br>
                     <br>
                     <button id="add-btn" type="button" class="btn btn-default">Calculate</button>
@@ -93,12 +94,14 @@
             </div>
             <div class="col-md-4" id="BMI">
                 <h5>Body Mass Index</h5>
+                <img src="/template_2/static/images/BMI_chart.gif" alt="BMI-Chart" width="300" height="200">
+                <hr>
             </div>
         </div>
     </div>    
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="static/js/states.js"></script>
+    <script src="static/js/states_v2.js"></script>
     <script src="static/json/states.json"></script>
 </body>
