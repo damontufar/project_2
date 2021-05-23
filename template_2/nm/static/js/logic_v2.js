@@ -1,6 +1,6 @@
 user_state = 'Mexico City'
 
-d3.json("./static/data/json/states.json").then((importedData) => {
+d3.json("./static/json/states.json").then((importedData) => {
     let data = importedData;
     let states = [];
 
