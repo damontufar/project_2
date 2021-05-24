@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GHNM- News&Recommendations for you!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: white;">
+      <a class="navbar-brand" href="main.html" alt="Home">
+          <img src="../project2-react/src/logochido.png" width="100px" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="news_and_recommendations.html">
+                News and Recommendations
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="px-5 py-5 my-5 ml-0 col-md-6">
+          <hr>
+          <h5 style="text-align: center; color: navy; font-weight: bold;">
+            News and Recommendations
+          </h5>
+          <div class="jumbotron" style="background-color: whitesmoke; height: 300px; width: auto">
+          </div>
+        </div>
+        <div class="px-5 py-5 my-5 ml-0 col-md-6">
+          <hr>
+          <h5 style="text-align: center; color: navy; font-weight: bold;"> 
+            Latest News about Metabolic Syndrom
+          </h5>
+          <div class="jumbotron" style="background-color: whitesmoke; height: 1250px; width: auto">
+              
+              <!--latest health news 1-->
+            <p>{{health_data.date[1].news_date}}</p>
+              <a href="{{health_data.link[0].news_link}}" target="_blank">{{health_data.title[0].news_title}}</a>
+            <p>{{health_data.para[0].news_para}}</p>
+            <img src={{health_data.image[0].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+
+              <!--latest health news 2-->
+            <hr color="blue" size=3>
+            <p>{{health_data.date[1].news_date}}</p>
+              <a href="{{health_data.link[1].news_link}}" target="_blank">{{health_data.title[1].news_title}}</a>  
+            <p>{{health_data.para[1].news_para}}</p>
+            <img src={{health_data.image[1].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+
+              <!--latest health news 3-->
+            <hr color="blue" size=3>
+              <p>{{health_data.date[2].news_date}}</p>
+              <a href="{{health_data.link[2].news_link}}" target="_blank">{{health_data.title[2].news_title}}</a>  
+              <p>{{health_data.para[2].news_para}}</p>
+              <img src={{health_data.image[2].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="px-5 py-5 my-5 ml-0 col-md-12">
+          <h5 style="text-align: center; color: red; font-weight: bold;">
+            <div class="jumbotron text-center">
+              <h1>Health News</h1>
+              <p><a class="btn btn-primary btn-lg" href="scrape_health.py" role="button">Latest News Update</a></p>
+            </div>
+            Youtube Personalized Video Recommendations
+          </h5>
+          <div class="jumbotron" style="background-color: whitesmoke; height: 300px; width: auto">
+            {% for Recommendation in Recommendations %}
+              <small>{{ Recommendations.v_url }}</small><br> 
+              <small>{{ Recommendations.v_title }}</small><br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
