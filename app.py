@@ -1,5 +1,4 @@
 
-from operator import ne
 from flask import Flask
 from sqlalchemy.orm import backref
 from config import key
@@ -10,6 +9,7 @@ from flask import Flask , render_template, jsonify, request, redirect, url_for, 
 db_url = f'postgresql://postgres:{key}@localhost:5432/health_db'
 
 app = Flask(__name__)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False #to supress warning
 db = SQLAlchemy(app)
@@ -61,11 +61,7 @@ def health():
         db.session.add(new_data)
         db.session.commit()
 
-        user_data = Users.query.all()
-
-        return render_template('health.html', user_data = user_data) # passes user_data variable into the index.html file.
     return render_template('health.html')
-
 
 if __name__ == '__main__':
     db.create_all()
