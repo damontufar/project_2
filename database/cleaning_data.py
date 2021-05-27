@@ -63,8 +63,11 @@ countries_df.columns = ['Country_Name', 'Country_Code']
 
 deathsdf_c = pd.merge(deathsdf, countries_df, on='Country_Code')
 deathsdf_c = deathsdf_c.iloc[:, 0:10]
-#print(deathsdf_c.info())
-
+print(deathsdf_c.info())
+#Filter data to chart in health page
+deaths_filt = deathsdf_c[(deathsdf_c["Country_Name_x"] == "China") | (deathsdf_c["Country_Name_x"] == "Colombia") | (deathsdf_c["Country_Name_x"] == "Guatemala") | (deathsdf_c["Country_Name_x"] == "Mexico") | (deathsdf_c["Country_Name_x"] == "United States")]
+write_path=os.path.join('../template_2/')
+deaths_filt.to_csv(f'{write_path}deaths_risk_factor.csv')
 
 #Data Normalization
 deathsdf_transformed = deathsdf_c.melt(id_vars = ['Country_Name_x', 'Country_Code', 'Year'], var_name = 'risk_factor', value_name='number_deaths')

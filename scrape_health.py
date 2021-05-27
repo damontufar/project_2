@@ -7,8 +7,13 @@ import pandas as pd
 
 def scrape():
     #set up splinter 
+<<<<<<< HEAD
     #executable_path = {"executable_path": ChromeDriverManager().install()}
     executable_path = {"executable_path": "chromedriver.exe"}
+=======
+    executable_path = {"executable_path": ChromeDriverManager().install()}
+    #executable_path = {"executable_path": "chromedriver.exe"}
+>>>>>>> 3fd363de8aedf85414c0a06c196842ce18b7ffb5
     browser = Browser("chrome", **executable_path, headless=False)
 
     #--------------------------

@@ -231,8 +231,8 @@ else {
 
 // Creating map object
 var myMap = L.map("map", {
-  center: coord[0],
-  zoom: closeness
+  center: [23.634501, -102.552784],
+  zoom: 6
 
 });
 
