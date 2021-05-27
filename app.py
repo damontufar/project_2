@@ -1,76 +1,42 @@
+from flask import Flask, render_template, redirect
+from flask_pymongo import PyMongo
+import scrape_health
 
-from operator import ne
-from flask import Flask
-from sqlalchemy.orm import backref
-from config import key
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
-from flask import Flask , render_template, jsonify, request, redirect, url_for, jsonify
-
-db_url = f'postgresql://postgres:{key}@localhost:5432/health_db'
-
+#create an instance of Flask
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = db_url
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False #to supress warning
-db = SQLAlchemy(app)
 
-#declaring models to create tables in database
+#Use Pymongo to establish Mongo connection
+mongo = PyMongo(app, uri="mongodb://localhost:27017/health_app")
 
-class Users(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    first_name = db.Column(db.String(80), index = True, unique = False)
-    last_name = db.Column(db.String(80), index = True, unique = False)
-    birth_year = db.Column(db.Integer, index = True, unique = False)
-    height = db.Column(db.Integer, index = True, unique = False)
-    weight = db.Column(db.Integer, index = True, unique = False)
-    state = db.Column(db.String, index = True, unique = False)
-    user_habits = db.relationship('UserHabits', backref = 'users', lazy='dynamic')
+#delete in production
+mongo.db.collection.drop()
 
-class UserHabits(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    frequency = db.Column(db.String, index = True, unique = False)
-    users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#route to render index.html template using data from mongo
+@app.route("/")
+def news_and_recommendations():
 
-    #Function to pass user's data and gets as new entry in the table
-    def __init__(self, first_name, last_name, birth_year, height, weight, state):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.birth_year = birth_year
-        self.height = height
-        self.weight = weight
-        self.state = state
+    #find one record of data from mongo database
+    health_data = mongo.db.health_data.find_one()
+    
+    #return template and data
+    return render_template("news_and_recommendations.html", health_data=health_data)
+    
+#route that will trigger the scrape function
+@app.route("/scrape")
+def scrape():
 
 
-        
-@app.route('/')
-def home():
-    return redirect(url_for('health'))
+    health = mongo.db.health_data
+    health_data = scrape_health.scrape()
+    #health.insert_many(health_data)
+    health.update({}, health_data, upsert=True)
 
-@app.route('/health', methods = ['GET', 'POST'])
-def health():
-    if request.method == 'POST': # When a user clicks "Calculate" button it will come here
-        data = request.form # request the data from the form in health.html file
-        first_name = data['first_name']
-        last_name = data['last_name']
-        birth_year = data['selBirthYear']
-        height = data['selHeight']
-        weight = data['selWeight']
-        state = data['selState']
+    print(health_data)
 
-        new_data = Users(first_name, last_name, birth_year, height, weight, state)
-        db.session.add(new_data)
-        db.session.commit()
-
-        user_data = Users.query.all()
-
-        return render_template('health.html', user_data = user_data) # passes user_data variable into the index.html file.
-    return render_template('health.html')
-
-
-if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=True)
-
+    return redirect("/", code=302)
+    
+if __name__ == "__main__":
+    app.run(debug=True)     
 
 
 

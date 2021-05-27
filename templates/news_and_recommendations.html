@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GHNM- News&Recommendations for you!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+
+  <style>
+    .dataframe{
+        border:2px solid black;
+    }
+    h5{
+        font-size: 20px;
+    }
+    h3{
+        font-size: 25px; 
+    }
+    h4{
+        font-size: 20px; 
+    }
+    h6{
+        font-size: 25px; 
+    }
+    p{
+        font-size: 10x
+    }
+    a{
+        font-size: 35x
+    }
+  </style>
+
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: white;">
+      <a class="navbar-brand" href="main.html" alt="Home">
+          <img src="../project2-react/src/logochido.png" width="100px" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="news_and_recommendations.html">
+                News and Recommendations
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="px-5 py-5 my-5 ml-0 col-md-6">
+          <hr>
+          <h4 style="text-align: center; color: navy; font-weight: bold;">
+            What is Metabolic Syndrome?
+          </h4>
+          <div class="jumbotron" style="background-color: whitesmoke; height: 1040px; width: auto">
+            <p>Metabolic syndrome is a condition characterized by the presence diabetes, obesity and high blood pressure. 
+               These conditions increase the risk of cardiovascular illnesses such as stroke and heart disease. 
+               Individually, diabetes, high blood pressure and obesity can lead to vascular damage, but a combination of
+                these illnesses is particularly dangerous.</p>
+            <h4>SYMPTOMS</h4>
+            <p>Some of the typical features of metabolic syndrome are described below.</p>
+              <p>•	Waist circumference of at least 37 inches among European men and at least 31.5 inches among European women.</p>
+              <p>•	Waist circumference of at least 35.5 inches among South Asian men and at least 31.5 inches in South Asian women.</p>
+              <p>•	A blood pressure level that is consistently 140/90 mmHg or higher.</p>
+              <p>•	Raised triglyceride level and low HDL (high density lipoprotein) level. This combination increases the risk of a condition
+                    called atherosclerosis, where fatty materials accumulate in the arteries.</p>
+              <p>•	Reduced ability to control the blood glucose level. This is referred to as insulin resistance.</p>
+              <p>•	Higher risk of developing blood clots and deep vein thrombosis (DVT).</p>
+              <p>•	A tendency to suffer from inflammation, which causes pain and swelling in the tissues.</p>
+            <h4>CAUSES</h4> 
+              <p>Factors that increase the risk of metabolic syndrome include a genetic predisposition to developing insulin resistance,
+                 overweight and physical inactivity. Therefore, individuals with a genetic tendency towards insulin resistance are more likely
+                  to develop the syndrome if they fail to maintain a healthy weight and exercise regularly. Metabolic syndrome is particularly
+                   common in people of Asian and African-Carribean descent and in women who have polycystic ovary syndrome.</p>
+            <h4 class="fw-bold">PREVENTION</h4>  
+              <P>The risk of metabolic syndrome developing can be reduced if people make certain lifestyle changes, some of which are listed below.</P>  
+              <P>•	Lose weight</P>
+              <P>•	Engage in regular physical activity</P>  
+              <P>•	Reduce alcohol consumption</P>
+              <P>•	Take any medications prescribed for high blood glucose or high cholesterol.</P>
+              <P>•	Follow a healthy diet</P>  
+
+          </div>
+        </div>
+
+        <div class="px-5 py-5 my-5 ml-0 col-md-6">
+          <hr>
+          <h4 style="text-align: center; color: navy; font-weight: bold;"> 
+            Latest News about Metabolic Syndrom
+          </h4>
+          
+          <div class="jumbotron" style="background-color: whitesmoke; height: 1040px; width: auto">
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Latest News Update</a></p>
+              <!--latest health news 1-->
+            <p>{{health_data.date[1].news_date}}</p>
+              <a href="{{health_data.link[0].news_link}}" target="_blank">{{health_data.title[0].news_title}}</a>
+            <p>{{health_data.para[0].news_para}}</p>
+            <img src={{health_data.image[0].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+
+              <!--latest health news 2-->
+            <hr color="blue" size=3>
+            <p>{{health_data.date[1].news_date}}</p>
+              <a href="{{health_data.link[1].news_link}}" target="_blank">{{health_data.title[1].news_title}}</a>  
+            <p>{{health_data.para[1].news_para}}</p>
+            <img src={{health_data.image[1].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+
+              <!--latest health news 3-->
+            <hr color="blue" size=3>
+              <p>{{health_data.date[2].news_date}}</p>
+              <a href="{{health_data.link[2].news_link}}" target="_blank">{{health_data.title[2].news_title}}</a>  
+              <p>{{health_data.para[2].news_para}}</p>
+              <img src={{health_data.image[2].news_image}} class="img-fluid" alt="Responsive image" style="max-width:100%; max-height: auto;">
+
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="px-5 py-5 my-5 ml-0 col-md-12">
+          <h5 style="text-align: center; color: red; font-weight: bold;">
+            <div class="jumbotron text-center">
+              <!--<h1>Health News</h1>-->
+              <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Latest News Update</a></p>
+            </div>
+
+            Youtube Personalized Video Recommendations
+          </h5>
+          <div class="jumbotron" style="background-color: whitesmoke; height: 300px; width: auto">
+            {% for Recommendation in Recommendations %}
+              <small>{{ Recommendations.v_url }}</small><br> 
+              <small>{{ Recommendations.v_title }}</small><br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
