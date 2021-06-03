@@ -16,6 +16,10 @@ def home():
 def health_form():
     return render_template('health.html')
 
+@app.route('/news_and_recommendations')
+def news():
+    return render_template('news_and_recommendations.html')
+
 
 
 if __name__ == '__main__':
